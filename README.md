@@ -18,11 +18,10 @@ This project is a lofi music website built using React.js with TypeScript. It pr
 ### Demo Video
 Watch the demo video to see the website in action:
 
-https://user-images.githubusercontent.com/your-video-url/demo3.mp4
-
-Or view locally:
-
-https://github.com/Agent07-X-lab/lofi-music-website/blob/master/public/assets/imageDemo/demo3.mp4
+<video width="100%" controls>
+  <source src="public/assets/imageDemo/demo3.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Features
 
