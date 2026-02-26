@@ -5,33 +5,48 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![GitHub deployments](https://img.shields.io/github/deployments/Agent07-X-lab/lofi-music-website/production?style=for-the-badge&logo=vercel&label=vercel%20deployment%20status)
 
-This project is a lofi music website built using React.js with TypeScript. It provides a soothing and relaxing experience for users who enjoy listening to lofi music. The website is designed to create a calming ambiance with its minimalistic and aesthetically pleasing interface. This project was inspired by my love of listening to lofi music from YouTube while coding.
+A beautiful lofi music website built with React.js and TypeScript that provides a soothing and relaxing experience for music lovers. Create your perfect ambient environment for studying, working, or just relaxing.
 
-> If you like the project, please give it a star and consider contributing by finishing or updating the to-do list with tasks you want me to complete. Feel free to contribute to this little fun project.
+> If you like this project, please give it a star ⭐ and feel free to contribute!
 
 ## Demo
 
 ### Preview Images
+
 ![Demo Image 1](public/assets/imageDemo/demo1.png)
+
 ![Demo Image 2](public/assets/imageDemo/demo2.png)
 
-### Demo Video
-Watch the demo video to see the website in action:
+### Demo Videos
+
+Watch the demo videos to see the website in action:
 
 <video width="100%" controls>
   <source src="public/assets/imageDemo/demo3.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
+<video width="100%" controls>
+  <source src="public/assets/imageDemo/DemoVid1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## Features
 
-- **Music Player**: The website includes a music player that allows users to play, pause, skip, and control the volume of the lofi music tracks.
-- **Custom Song Upload**: Users can upload their own custom songs to personalize their listening experience.
-- **Dark/Light Mode**: Toggle between dark and light themes for better user experience during different times of day.
-- **Ambient Sounds**: Add ambient sounds like rain, fire, traffic, and more to create the perfect atmosphere.
-- **Focus Timer**: Built-in countdown timer to help you stay focused during study or work sessions.
-- **Todo List**: Keep track of your tasks while enjoying your music.
-- **Multiple Moods**: Choose from different visual themes (sunny, rainy, night, etc.) to match your mood.
+- 🎵 **Music Player** - Full-featured player with play, pause, skip, and volume controls
+- 📤 **Custom Song Upload** - Upload and add your own songs to the playlist
+- 🌙 **Dark/Light Mode** - Toggle between themes for day and night listening
+- 🔊 **Ambient Sounds** - Mix in ambient sounds:
+  - Rain (city, forest)
+  - Fire (campfire, fireplace)
+  - Nature (birds, ocean, wind)
+  - Urban (traffic, city sounds)
+- ⏱️ **Focus Timer** - Built-in countdown timer for study sessions
+- 📝 **Todo List** - Keep track of tasks while you relax
+- 🎨 **Multiple Moods** - Choose from various visual themes:
+  - Day/Night
+  - Sunny/Rainy
+  - And more...
 
 ## Tech Stack
 
@@ -41,65 +56,98 @@ Watch the demo video to see the website in action:
 - **Build Tool**: Create React App
 - **Deployment**: Vercel
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
 
 1. Clone the repository
 
-    ```sh
-    git clone https://github.com/Agent07-X-lab/lofi-music-website.git
-    ```
+```bash
+git clone https://github.com/Agent07-X-lab/lofi-music-website.git
+```
 
 2. Navigate to the project directory
 
-    ```sh
-    cd lofi-music-website
-    ```
+```bash
+cd lofi-music-website
+```
 
-3. Install the dependencies
+3. Install dependencies
 
-    ```sh
-    yarn install
-    ```
+```bash
+# Using npm
+npm install
+
+# Using yarn
+yarn install
+```
 
 4. Start the development server
 
-    ```sh
-    yarn start
-    ```
+```bash
+# Using npm
+npm start
+
+# Using yarn
+yarn start
+```
 
 5. Open your browser and visit `http://localhost:3000`
 
-## To-Do Checklist
+## Project Structure
 
-### Project Initialization
+```
+lofi-music-website/
+├── public/
+│   ├── assets/
+│   │   ├── icons/          # SVG icons
+│   │   ├── imageDemo/      # Demo images and videos
+│   │   ├── lofi/           # Background music tracks
+│   │   ├── musics/         # Ambient sound effects
+│   │   └── video/          # Background videos
+│   └── index.html
+├── src/
+│   ├── components/         # React components
+│   │   ├── CountDownTimer/
+│   │   ├── DarkLightSwitch/
+│   │   ├── Home/
+│   │   ├── ModifierBoard/
+│   │   ├── Player/
+│   │   ├── RainToggleButton/
+│   │   ├── SongUploader/
+│   │   ├── TimerStyled/
+│   │   └── TodoList/
+│   ├── constants/          # App constants
+│   ├── data/               # Static data
+│   ├── layout/             # Layout components (Header, Footer)
+│   ├── pages/              # Page components
+│   ├── store/              # Redux store and slices
+│   ├── types/              # TypeScript interfaces
+│   ├── App.tsx
+│   └── index.tsx
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-- [x] Create a basic React project
-- [x] Add sound and image theme transitions effect
+## Contributing
 
-### Features and Enhancements
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- [ ] Add a feature for users to upload their own custom songs
-- [x] Implement a dark mode toggle for better user experience during nighttime listening
-- [ ] Integrate GitHub login to allow the user to import songs from a private GitHub playlist
-- [ ] Integrate Spotify or any free music API to fetch music from the user's playlist on the given cloud platform
-- [ ] Create a bookmarking feature where the user can save all their favorite music in IndexedDB for persistent storage or local storage if the browser does not support IndexedDB
-- [ ] Add user profile management to personalize the experience
+## License
 
-### UI/UX Improvements
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- [ ] Enhance the user interface with more interactive animations
-- [ ] Optimize the website for mobile devices
-- [ ] Add a customizable background option for users
+## Acknowledgments
 
-### Performance and Optimization
+- Inspired by lofi hip hop radio from YouTube
+- Thanks to all contributors and music creators
 
-- [ ] Optimize the codebase for better performance
-- [ ] Reduce the bundle size by using code splitting and lazy loading
+---
 
-### Documentation
-
-- [ ] Update this README.md with more detailed instructions
-- [ ] Create a contribution guide for new contributors
-- [ ] Document the API endpoints used in the project
-
-Feel free to add any additional tasks you think are necessary to improve this project. Let's collaborate and make this lofi music website an amazing place for lofi lovers!
+Made with ❤️ for lofi lovers
