@@ -1,20 +1,46 @@
 # Lofi Music Website
 
 ![React](https://img.shields.io/badge/React-17.0.2-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![GitHub deployments](https://img.shields.io/github/deployments/Agent07-X-lab/lofi-music-website/production?style=for-the-badge&logo=vercel&label=vercel%20deployment%20status)
 
+This project is a lofi music website built using React.js with TypeScript. It provides a soothing and relaxing experience for users who enjoy listening to lofi music. The website is designed to create a calming ambiance with its minimalistic and aesthetically pleasing interface. This project was inspired by my love of listening to lofi music from YouTube while coding.
 
-This project is a lofi music website built using React.js. It provides a soothing and relaxing experience for users who enjoy listening to lofi music. The website is designed to create a calming ambiance with its minimalistic and aesthetically pleasing interface. This project was inspired by my love of listening to lofi music from YouTube while coding.
+> If you like the project, please give it a star and consider contributing by finishing or updating the to-do list with tasks you want me to complete. Feel free to contribute to this little fun project.
 
->If you like the project, please give it a star and consider contributing by finishing or updating the to-do list with tasks you want me to complete. Feel free to contribute to this little fun project.
+## Demo
 
+### Preview Images
 ![Demo Image 1](public/assets/imageDemo/demo1.png)
 ![Demo Image 2](public/assets/imageDemo/demo2.png)
+
+### Demo Video
+Watch the demo video to see the website in action:
+
+https://user-images.githubusercontent.com/your-video-url/demo3.mp4
+
+Or view locally:
+
+https://github.com/Agent07-X-lab/lofi-music-website/blob/master/public/assets/imageDemo/demo3.mp4
 
 ## Features
 
 - **Music Player**: The website includes a music player that allows users to play, pause, skip, and control the volume of the lofi music tracks.
+- **Custom Song Upload**: Users can upload their own custom songs to personalize their listening experience.
+- **Dark/Light Mode**: Toggle between dark and light themes for better user experience during different times of day.
+- **Ambient Sounds**: Add ambient sounds like rain, fire, traffic, and more to create the perfect atmosphere.
+- **Focus Timer**: Built-in countdown timer to help you stay focused during study or work sessions.
+- **Todo List**: Keep track of your tasks while enjoying your music.
+- **Multiple Moods**: Choose from different visual themes (sunny, rainy, night, etc.) to match your mood.
+
+## Tech Stack
+
+- **Frontend**: React.js 17.0.2 with TypeScript
+- **State Management**: Redux Toolkit
+- **Styling**: SCSS / Sass
+- **Build Tool**: Create React App
+- **Deployment**: Vercel
 
 ## Installation
 
