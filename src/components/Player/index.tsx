@@ -20,6 +20,13 @@ const Player = ({
   const audioElement = useRef<any>();
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Safety: clamp currentSongIndex to valid range when songs array changes
+  useEffect(() => {
+    if (songs.length > 0 && currentSongIndex >= songs.length) {
+      setCurrentSongIndex(0);
+    }
+  }, [songs.length, currentSongIndex, setCurrentSongIndex]);
+
   useEffect(() => {
     if (isPlaying) {
       audioElement.current.play();
@@ -30,11 +37,17 @@ const Player = ({
   }, [isPlaying, volumeValue]);
 
   useEffect(() => {
-    audioElement.current.src = songs[currentSongIndex].src;
-    if (isPlaying) {
-      audioElement.current.play();
+    if (songs.length > 0 && currentSongIndex < songs.length) {
+      audioElement.current.src = songs[currentSongIndex].src;
+      if (isPlaying) {
+        audioElement.current.play();
+      }
     }
   }, [currentSongIndex, songs, isPlaying]);
+
+  const currentSong = songs.length > 0 && currentSongIndex < songs.length 
+    ? songs[currentSongIndex] 
+    : null;
 
   const SkipSong = (forwards = true) => {
     if (forwards) {
@@ -64,6 +77,17 @@ const Player = ({
   return (
     <div className="music-player">
       <audio ref={audioElement}></audio>
+      {/* Song info display */}
+      {currentSong && (
+        <div className="music-player--info">
+          <span className="song-title">{currentSong.name}</span>
+          {currentSong.isUploaded && (
+            <span className="uploaded-badge">
+              <i className="fas fa-cloud-upload-alt"></i>
+            </span>
+          )}
+        </div>
+      )}
       <div className="music-player--controls">
         <button className="skip-btn" onClick={() => SkipSong(false)}>
           <img src="/assets/icons/prev.svg" alt="" />

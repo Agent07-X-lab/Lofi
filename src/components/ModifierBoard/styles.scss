@@ -46,6 +46,29 @@
   border-radius: 0 34px 34px 34px;
 }
 
+.icon.active {
+  color: #f3a952;
+  transition: color 0.25s ease;
+  
+  i {
+    filter: drop-shadow(0 0 6px rgba(243, 169, 82, 0.4));
+  }
+}
+
+.modifierBox.upload-box {
+  background: rgba(18, 18, 24, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+
+  h4 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+}
+
 .modifierBox {
   position: absolute;
   right: 100%;

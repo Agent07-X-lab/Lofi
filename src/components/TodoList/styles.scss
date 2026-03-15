@@ -1,15 +1,214 @@
-.todoList {
-  height: 200px;
-  // overflow-y: scroll;
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
 }
 
-.todolistList {
-  height: 150px;
-  overflow-y: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.todo-form {
+  .input-group {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+
+    &:focus-within {
+      border-color: #bb86fc;
+      box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
+    }
+  }
+
+  .todo-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    outline: none;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .todo-add-btn {
+    background: rgba(187, 134, 252, 0.15);
+    color: #bb86fc;
+    border: none;
+    padding: 0 1.25rem;
+    height: 100%;
+    align-self: stretch;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #bb86fc;
+      color: #121212;
+    }
+  }
 }
 
-.todolistList::-webkit-scrollbar {
-  display: none;
+.todo-alert {
+  background: rgba(231, 76, 60, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo-list {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 4px;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(187, 134, 252, 0.3);
+    border-radius: 2px;
+
+    &:hover {
+      background: rgba(187, 134, 252, 0.6);
+    }
+  }
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.1);
+
+    .todo-delete-btn {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &.completed {
+    opacity: 0.6;
+    background: rgba(46, 204, 113, 0.05);
+    border-color: rgba(46, 204, 113, 0.1);
+
+    .todo-text {
+      text-decoration: line-through;
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  .todo-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    cursor: pointer;
+    overflow: hidden;
+
+    .checkbox {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+
+      i {
+        font-size: 0.6rem;
+        color: #121212;
+      }
+
+      &.checked {
+        background: #2ecc71;
+        border-color: #2ecc71;
+      }
+    }
+
+    .todo-text {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.85);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.2s ease;
+    }
+  }
+
+  .todo-delete-btn {
+    background: transparent;
+    border: none;
+    color: rgba(231, 76, 60, 0.5);
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(231, 76, 60, 0.15);
+      color: #e74c3c;
+    }
+  }
+}
+
+.todo-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+
+  i {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.15);
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin: 0;
+    max-width: 80%;
+    line-height: 1.4;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

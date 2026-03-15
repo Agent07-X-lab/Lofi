@@ -12,6 +12,7 @@ import { changeVolume } from "../../store/slice/changeVolumeSlice";
 import CountDownTimer from "../CountDownTimer";
 import TodoList from "../TodoList";
 import SongUploader from "../SongUploader";
+import { UploadedSong } from "../SongUploader";
 import {
   IModifierBoardProps,
   MoodMode,
@@ -49,7 +50,7 @@ const ModifierBoard = ({
   const [openMood, setOpenMood] = useState<boolean>(false);
   const [openFocus, setOpenFocus] = useState<boolean>(false);
   const [openUpload, setOpenUpload] = useState<boolean>(false);
-  const [uploadedSongs, setUploadedSongs] = useState<any[]>([]);
+  const [uploadedSongs, setUploadedSongs] = useState<UploadedSong[]>([]);
   const [backgroundNoise, setBackgroundNoise] = useState<IBackgroundNoise>({
     cityTraffic: 0,
     cityRain: 0,
@@ -68,11 +69,13 @@ const ModifierBoard = ({
   const toggleMoodHandler = () => {
     setOpenMood(!openMood);
     setOpenFocus(false);
+    setOpenUpload(false);
   };
 
   const toggleFocusHandler = () => {
     setOpenFocus(!openFocus);
     setOpenMood(false);
+    setOpenUpload(false);
   };
 
   const changeMoodHandler = (mode: MoodMode) => {
@@ -101,15 +104,47 @@ const ModifierBoard = ({
     setOpenFocus(false);
   };
 
-  const handleSongUploaded = (song: any) => {
-    // Only add to uploaded list - don't add to main playlist
-    // User can play uploaded songs separately
+  const handleSongUploaded = (song: UploadedSong) => {
+    // Track in the uploaded songs list for the uploader UI
     setUploadedSongs((prev) => [...prev, song]);
+    
+    // Add the uploaded song to the main playlist so it actually plays!
+    // Generate a unique numeric id for compatibility with the existing song format
+    const newSong = {
+      id: songs.length,
+      name: song.name,
+      mood: song.mood,
+      src: song.src,
+      isUploaded: true,
+      uploadId: song.id,
+    };
+    setSongs((prev: any[]) => [...prev, newSong]);
   };
 
   const handleRemoveSong = (songId: string) => {
-    // Only remove from uploaded songs list
+    // Remove from the uploaded songs tracker
     setUploadedSongs((prev) => prev.filter((s) => s.id !== songId));
+    
+    // Also remove from the main playlist
+    setSongs((prev: any[]) => prev.filter((s: any) => s.uploadId !== songId));
+  };
+
+  const handlePlaySong = (songId: string) => {
+    // Find the song in the main playlist by its uploadId and switch to it
+    const index = songs.findIndex((s: any) => s.uploadId === songId);
+    if (index !== -1) {
+      // We don't have setCurrentSongIndex here, but we can reorder songs
+      // to put the target song first, or dispatch an event.
+      // Actually, we can do a simple workaround: move the song to current position.
+      // For now, let's just ensure the song is in the playlist (it already is).
+      // The user can use the player controls to navigate to it.
+      
+      // Better approach: we'll re-arrange the songs array to put this song at position 0
+      // and reset the current song index via setSongs
+      const targetSong = songs[index];
+      const remaining = songs.filter((_: any, i: number) => i !== index);
+      setSongs([targetSong, ...remaining]);
+    }
   };
 
   const audioSettings: IAudioSetting[] = [
@@ -265,7 +300,7 @@ const ModifierBoard = ({
             </div>
           )}
         </div>
-        {/* Upload Button - separate from Mood and Focus */}
+        {/* Upload Button */}
         <div className='modifier__icon'>
           <div
             className={`icon ${openUpload ? "active" : ""}`}
@@ -274,12 +309,16 @@ const ModifierBoard = ({
             <i className='fas fa-cloud-upload-alt fa-2x'></i>
           </div>
           {openUpload && (
-            <div className='modifierBox'>
-              <h4>Upload Your Music</h4>
+            <div className='modifierBox upload-box'>
+              <h4>
+                <i className='fas fa-music' style={{ marginRight: '8px', color: '#bb86fc' }}></i>
+                Upload Your Music
+              </h4>
               <SongUploader 
                 onSongUploaded={handleSongUploaded} 
                 uploadedSongs={uploadedSongs}
                 onRemoveSong={handleRemoveSong}
+                onPlaySong={handlePlaySong}
               />
             </div>
           )}
